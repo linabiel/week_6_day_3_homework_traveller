@@ -11,8 +11,8 @@ Traveller.prototype.getJourneyEndLocations = function () {
 };
 
 Traveller.prototype.getJourneysByTransport = function (transport) {
-    return this.journeys.filter(journeys => {
-        return journeys.transport === transport
+    return this.journeys.filter(journey => {
+        return journey.transport === transport
     })
 };
 
@@ -28,13 +28,16 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
     }, 0)
 };
 
-// Traveller.prototype.getUniqueModesOfTransport = function () {
-//     return this.journeys.map(journey => {
-//         console.log(journey.transport)
-//         return journey.transport
-//     })
-//
-// };
+Traveller.prototype.getUniqueModesOfTransport = function () {
+    return this.journeys.map((journey) => {
+        console.log(journey.transport)
+        return journey.transport;
+    })
+    .filter((transport, index, array) => {
+        console.log(array.indexOf(transport))
+        return array.indexOf(transport) === index;
+    })
+}
 
 
 module.exports = Traveller;
